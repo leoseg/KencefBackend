@@ -1,5 +1,10 @@
 package com.example.kencefdataviewer.entities;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -14,28 +19,38 @@ public class Child {
     @GeneratedValue
     private Long id;
 
+    @Getter
+    @Setter
     private String name;
 
+    @Getter
+    @Setter
     private LocalDate birthdate;
 
+    @Getter
+    @Setter
     private String godparentName;
 
+    @Getter
+    @Setter
     private String address;
 
     public Child(){};
 
-    public Child(String name, LocalDate birthdate, String adress){
-        this.name = name;
-        this.birthdate = birthdate;
-        this.address = adress;
-    }
 
-    public Child(String name, LocalDate birthdate, String adress, String godparentName){
-        this.name = name;
-        this.birthdate = birthdate;
-        this.address = adress;
-        this.godparentName = godparentName;
-    }
+//    public Child(String name,LocalDate birthdate, String address){
+//        this.name = name;
+//        this.birthdate = birthdate;
+//        this.address = address;
+//    }
+
+
+//    public Child(String name,LocalDate birthdate, String address, String godparentName){
+//        this.name = name;
+//        this.birthdate = birthdate;
+//        this.address = address;
+//        this.godparentName = godparentName;
+//    }
 
 
 }
