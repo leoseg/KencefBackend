@@ -9,7 +9,9 @@ import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
 import java.util.List;
 
-
+/**
+ * Controller for the rest-api of the child table
+ */
 @RestController
 @RequestMapping("/child")
 public class ChildController {
@@ -18,12 +20,21 @@ public class ChildController {
     @Resource
     private ChildRepository childRepository;
 
+    /**
+     * Adds new child to table
+     * @param child to add
+     * @return child added
+     */
     @PostMapping("/add")
     public Child addNewChild(@RequestBody Child child){
-
+        logger.debug("Child with name "+ child.getName()+" was added");
         return childRepository.save(child);
     }
 
+    /**
+     * Gets all childs from table
+     * @return list of childs objects
+     */
     @GetMapping("/get")
     public List<Child> getChilds(){
         return childRepository.findAll();

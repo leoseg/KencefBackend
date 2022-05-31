@@ -37,20 +37,4 @@ public class Child {
 
     public Child(){}
 
-
-//    public Child(String name,LocalDate birthdate, String address){
-//        this.name = name;
-//        this.birthdate = birthdate;
-//        this.address = address;
-//    }
-
-
-//    public Child(String name,LocalDate birthdate, String address, String godparentName){
-//        this.name = name;
-//        this.birthdate = birthdate;
-//        this.address = address;
-//        this.godparentName = godparentName;
-//    }
-
-
 }

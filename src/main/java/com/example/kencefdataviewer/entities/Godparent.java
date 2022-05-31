@@ -37,12 +37,16 @@ public class Godparent {
 
     @Getter
     @OneToMany(mappedBy = "godparent", cascade = {CascadeType.MERGE})
-    List<Child> godchilds;
+    List<Child> childs;
 
-    public void setGodchilds(List<Child> godchilds) {
-        for(Child child :godchilds){
+    /**
+     * Sets list of childs and sets their id to godparent which adds the childs
+     * @param childs list of childs
+     */
+    public void setGodchilds(List<Child> childs) {
+        for(Child child :childs){
             child.setGodparent(this);
         }
-        this.godchilds = godchilds;
+        this.childs = childs;
     }
 }
