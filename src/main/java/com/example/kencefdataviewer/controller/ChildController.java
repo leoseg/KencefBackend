@@ -40,5 +40,14 @@ public class ChildController {
         return childRepository.findAll();
     }
 
+    /**
+     * Gets all childs from table without godparent
+     * @return list of childs objects
+     */
+    @GetMapping("/getwithoutparent")
+    public List<Child> getChildsWithoutParent(){
+        return childRepository.findByGodparentIsNull();
+    }
+
 
 }
