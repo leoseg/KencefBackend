@@ -1,14 +1,10 @@
 package com.example.kencefdataviewer.entities;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonFormat;
+
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
@@ -16,7 +12,9 @@ import java.time.LocalDate;
 public class Child {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @Getter
+    @Setter
     private Long id;
 
     @Getter
@@ -29,13 +27,15 @@ public class Child {
 
     @Getter
     @Setter
-    private String godparentName;
+    @ManyToOne
+    @JoinColumn(name= "godparent_id", referencedColumnName = "id")
+    private Godparent godparent;
 
     @Getter
     @Setter
     private String address;
 
-    public Child(){};
+    public Child(){}
 
 
 //    public Child(String name,LocalDate birthdate, String address){

@@ -7,21 +7,26 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
-
-
+import java.util.List;
 
 
 @RestController
-@RequestMapping("/addChild")
+@RequestMapping("/child")
 public class ChildController {
 
     Logger logger = LoggerFactory.getLogger(ChildController.class);
     @Resource
     private ChildRepository childRepository;
 
-    @PostMapping("/")
+    @PostMapping("/add")
     public Child addNewChild(@RequestBody Child child){
+
         return childRepository.save(child);
+    }
+
+    @GetMapping("/get")
+    public List<Child> getChilds(){
+        return childRepository.findAll();
     }
 
 

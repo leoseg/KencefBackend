@@ -4,18 +4,19 @@ package com.example.kencefdataviewer.entities;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+
+import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Table(name="godparent")
 public class Godparent {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Getter
+    @Setter
     Long id;
 
     @Getter
@@ -28,9 +29,20 @@ public class Godparent {
 
     @Getter
     @Setter
-    float donationAmount;
+    String amount_to_pay;
 
     @Getter
     @Setter
-    LocalDate dueDate;
+    LocalDate paydate;
+
+    @Getter
+    @OneToMany(mappedBy = "godparent", cascade = {CascadeType.MERGE})
+    List<Child> godchilds;
+
+    public void setGodchilds(List<Child> godchilds) {
+        for(Child child :godchilds){
+            child.setGodparent(this);
+        }
+        this.godchilds = godchilds;
+    }
 }
